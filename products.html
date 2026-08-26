@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OISM3 - Catalog</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo">OISM3</div>
+            <div class="logo-subtitle">Management System</div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="products.html" class="nav-item active">
+                <span class="nav-icon">📦</span>
+                <span>Catalog</span>
+            </a>
+
+            <a href="inventory.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span>Inventory</span>
+            </a>
+
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">🛒</span>
+                <span>Orders</span>
+            </a>
+
+            <a href="pos.html" class="nav-item">
+                <span class="nav-icon">💳</span>
+                <span>POS</span>
+            </a>
+
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Catalog</h1>
+                <p>Manage products, variants and pricing</p>
+            </div>
+
+        </div>
+
+
+        <!-- CREATE PRODUCT -->
+        <section class="content-card">
+
+            <div class="section-header">
+                <div>
+                    <h2>📦 Create New Product</h2>
+                    <p>Add a new product and its variants</p>
+                </div>
+            </div>
+
+
+            <form id="createProductForm" class="demo-form">
+
+                <div class="form-grid">
+
+                    <div class="form-field">
+                        <label for="title">Product Title</label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="Áo thun basic"
+                            required>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Category ID <span>(Optional)</span></label>
+                        <input
+                            type="number"
+                            id="categoryId"
+                            placeholder="Enter category ID, e.g. 1"
+                            min="1">
+                        <small>Enter the numeric ID of the category.</small>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Brand ID <span>(Optional)</span></label>
+                        <input
+                        type="number"
+                        id="brandId"
+                        placeholder="Enter brand ID, e.g. 1"
+                        min="1">
+                            <small>Enter the numeric ID of the brand.</small>
+                    </div>
+                    
+
+                </div>
+
+
+                <div class="variant-header">
+
+                    <div>
+                        <h3>Product Variants</h3>
+                        <p>Add SKU, barcode and pricing information</p>
+                    </div>
+
+                </div>
+
+
+                <div id="variantsContainer"></div>
+
+
+                <button
+                    type="button"
+                    class="secondary"
+                    id="addVariantBtn"
+                    onclick="addVariantRow()">
+                    + Add Variant
+                </button>
+
+
+                <div class="form-actions">
+
+                    <button type="submit">
+                        Create Product
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <div
+                class="result-box empty"
+                id="createResult">
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCT LIST -->
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>📋 Product List</h2>
+                    <p>View and manage your catalog</p>
+                </div>
+
+                <button
+                    class="reload-btn"
+                    onclick="loadProducts()">
+
+                    ↻ Reload Products
+
+                </button>
+
+            </div>
+
+
+            <div id="productsTableWrap"></div>
+
+
+            <div
+                class="result-box empty"
+                id="listResult">
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/api.js"></script>
+<script src="js/products.js"></script>
+
+</body>
+</html>
